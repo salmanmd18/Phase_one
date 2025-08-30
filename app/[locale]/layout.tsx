@@ -4,8 +4,8 @@ import '../globals.css';
 import Header from '@/components/Header';
 import {Inter, IBM_Plex_Sans_Arabic} from 'next/font/google';
 
-const inter = Inter({subsets: ['latin'], display: 'swap'});
-const ibmArabic = IBM_Plex_Sans_Arabic({subsets: ['arabic'], weight: ['400','500','600','700'], display: 'swap'});
+const inter = Inter({subsets: ['latin'], display: 'swap', preload: true});
+const ibmArabic = IBM_Plex_Sans_Arabic({subsets: ['arabic'], weight: ['400','500','600','700'], display: 'swap', preload: true});
 
 export default async function LocaleLayout({
   children, params: {locale}

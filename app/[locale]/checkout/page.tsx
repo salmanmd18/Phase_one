@@ -90,7 +90,7 @@ export default function Page(){
           <h2 className="font-semibold mb-3">{tB('summary')}</h2>
           <div className="flex items-center gap-3">
             <div className="relative w-24 h-16 rounded-lg overflow-hidden border">
-              <Image src={venue.hero} alt="Venue hero" fill className="object-cover" sizes="96px"/>
+              <Image src={venue.hero} alt="Venue hero" fill className="object-cover" sizes="96px" loading="eager" decoding="async"/>
             </div>
             <div>
               <div className="font-medium">{locale==='en'?venue.name_en:venue.name_ar}</div>

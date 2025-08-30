@@ -25,11 +25,11 @@ export default function Page({params}:{params:{locale:string; slug:string}}){
         <div>
           <div className="grid grid-cols-2 gap-3">
             <div className="col-span-2 aspect-video rounded-2xl overflow-hidden relative">
-              <Image src={v.hero} alt={`${locale==='en'?v.name_en:v.name_ar} main photo`} fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw"/>
+              <Image src={v.hero} alt={`${locale==='en'?v.name_en:v.name_ar} main photo`} fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" priority loading="eager"/>
             </div>
             {v.photos.map((p,i)=> (
               <div key={i} className="aspect-[4/3] rounded-2xl overflow-hidden relative">
-                <Image src={p} alt={`${locale==='en'?v.name_en:v.name_ar} photo ${i+1}`} fill className="object-cover" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 100vw"/>
+                <Image src={p} alt={`${locale==='en'?v.name_en:v.name_ar} photo ${i+1}`} fill className="object-cover" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 100vw" loading="lazy" decoding="async"/>
               </div>
             ))}
           </div>
@@ -84,7 +84,7 @@ export default function Page({params}:{params:{locale:string; slug:string}}){
               {venues.filter(x=>x.id!==v.id).map(x=> (
                 <div key={x.id} className="p-3 rounded-[var(--radius-md)] border bg-white shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] transition-base">
                   <div className="aspect-video rounded-xl overflow-hidden relative">
-                    <Image src={x.hero} alt={`${locale==='en'?x.name_en:x.name_ar} hero image`} fill className="object-cover" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"/>
+                    <Image src={x.hero} alt={`${locale==='en'?x.name_en:x.name_ar} hero image`} fill className="object-cover" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async"/>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
                     <div className="font-medium">{locale==='en'?x.name_en:x.name_ar}</div>

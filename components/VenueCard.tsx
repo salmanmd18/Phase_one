@@ -9,7 +9,7 @@ export default function VenueCard({v}:{v: Venue}){
   return (
     <article className="p-3 rounded-[var(--radius-md)] border bg-white shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] transition-base">
       <div className="aspect-video rounded-xl overflow-hidden relative">
-        <Image src={v.hero} alt={`${locale==='en'?v.name_en:v.name_ar} hero image`} fill className="object-cover" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"/>
+        <Image src={v.hero} alt={`${locale==='en'?v.name_en:v.name_ar} hero image`} fill className="object-cover" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" loading="lazy" decoding="async"/>
       </div>
       <div className="mt-3 flex items-center justify-between">
         <div>
