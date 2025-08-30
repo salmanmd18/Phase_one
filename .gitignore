@@ -1,0 +1,45 @@
+# --- Node / package managers ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# Keep your lockfile committed (important for reproducible builds)
+# DO NOT ignore: package-lock.json / yarn.lock / pnpm-lock.yaml
+
+# --- Next.js ---
+.next/
+.next/cache/
+out/
+
+# --- Build artifacts ---
+dist/
+*.tsbuildinfo
+
+# --- Env files (keep .env.example committed) ---
+.env
+.env.local
+.env.*.local
+
+# --- Vercel local project data ---
+.vercel/
+
+# --- Testing / coverage ---
+coverage/
+
+# --- IDE/editor cruft ---
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+
+# --- Optional: Turbo/monorepo caches (only if you add them later) ---
+.turbo/

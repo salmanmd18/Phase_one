@@ -7,5 +7,5 @@ export default {
     './components/**/*.{ts,tsx}'
   ],
   theme: { extend: {} },
-  plugins: [rtl()],
+  plugins: [rtl],
 } satisfies Config
