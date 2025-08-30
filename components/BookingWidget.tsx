@@ -47,18 +47,19 @@ export default function BookingWidget({priceSAR}:{priceSAR:number}){
           <div className="mt-3 flex gap-3 flex-wrap">
             <label className={`inline-flex items-center gap-2 px-3 py-2 rounded-xl border cursor-pointer ${onlineMethod==='stc'?'bg-slate-100':'hover:bg-slate-50'}`}>
               <input type="radio" name="onlinemethod" value="stc" checked={onlineMethod==='stc'} onChange={()=>setOnlineMethod('stc')} />
-              <span>📱 {tB('stcPay')}</span>
+              <span>{tB('stcPay')}</span>
             </label>
             <label className={`inline-flex items-center gap-2 px-3 py-2 rounded-xl border cursor-pointer ${onlineMethod==='rajhi'?'bg-slate-100':'hover:bg-slate-50'}`}>
               <input type="radio" name="onlinemethod" value="rajhi" checked={onlineMethod==='rajhi'} onChange={()=>setOnlineMethod('rajhi')} />
-              <span>🏦 {tB('alRajhi')}</span>
+              <span>{tB('alRajhi')}</span>
             </label>
           </div>
         )}
         {payMode==='offline' && (
-          <div className="mt-3 p-3 rounded-xl bg-slate-50 border text-sm text-slate-700">🧾 {tB('cashCollection')}</div>
+          <div className="mt-3 p-3 rounded-xl bg-slate-50 border text-sm text-slate-700">{tB('cashCollection')}</div>
         )}
       </fieldset>
     </div>
   )
 }
+
