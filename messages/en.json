@@ -1,0 +1,65 @@
+{
+  "Header": {
+    "dammamOnly": "Phase 1: Dammam only",
+    "home": "Home",
+    "venues": "Venues",
+    "services": "Services",
+    "checkout": "Checkout",
+    "toggleAr": "\u0627\u0644\u0639\u0631\u0628\u064a\u0629",
+    "toggleEn": "English",
+    "ariaSwitchToAr": "Switch to Arabic",
+    "ariaSwitchToEn": "\u0627\u0644\u062a\u0628\u062f\u064a\u0644 \u0625\u0644\u0649 \u0627\u0644\u0625\u0646\u062c\u0644\u064a\u0632\u064a\u0629"
+  },
+  "Home": {
+    "title": "Book resorts & venues in Dammam",
+    "tag": "Book fully online \u2022 Verified venues \u2022 Flexible payments",
+    "search": "Search",
+    "placeholder": "Search venues in Dammam\u2026",
+    "featured": "Featured Venues"
+  },
+  "Venues": {
+    "title": "Venues \u2014 Dammam",
+    "filtersNote": "Filters simplified for demo",
+    "capacity": "Capacity",
+    "perBooking": "per booking",
+    "viewDetails": "View details",
+    "similar": "Similar venues",
+    "price": "Price",
+    "sar": "SAR",
+    "back": "Back to results",
+    "amenities": "Amenities",
+    "description": "Description"
+  },
+  "Booking": {
+    "depositPolicy": "Pay 20% now to reserve. Pay the remaining 80% later.",
+    "payNow": "Pay now (20%)",
+    "payLater": "Pay later (80%) at venue / transfer / collection",
+    "paymentOptions": "Payment options",
+    "online": "Online",
+    "offline": "Offline",
+    "stcPay": "STC Pay",
+    "alRajhi": "Al Rajhi Bank transfer",
+    "cashCollection": "Cash collection by our local team",
+    "reserveDemo": "Reserve (demo)",
+    "checkout": "Checkout",
+    "summary": "Booking summary",
+    "contact": "Contact information",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "note": "Note to venue (optional)",
+    "agree": "I agree to the venue rules and cancellation terms",
+    "confirmDemo": "Confirm reservation (demo)",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "continue": "Continue",
+    "back": "Back"
+  },
+  "Services": {
+    "title": "Event Services in Dammam",
+    "category": "Category"
+  },
+  "Footer": {
+    "demoNote": "Demo only: no real payments."
+  }
+}
