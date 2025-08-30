@@ -28,7 +28,7 @@ export default function Header({active}:{active?: string}){
           <div className="text-sm text-slate-500">{t('dammamOnly')}</div>
         </div>
         <div className="flex items-center gap-2">
-          <Link href={href} hrefLang={other} prefetch className="px-3 py-1.5 rounded-xl border hover:bg-slate-100 text-sm font-medium transition-base" aria-label={t(locale==='en'?'ariaSwitchToAr':'ariaSwitchToEn')}>
+          <Link href={href} hrefLang={other} prefetch className="btn px-3 py-1.5 border bg-white hover:bg-slate-100 text-sm font-medium" aria-label={t(locale==='en'?'ariaSwitchToAr':'ariaSwitchToEn')}>
             {locale==='en'? t('toggleAr') : t('toggleEn')}
           </Link>
           <nav className="hidden sm:flex items-center gap-2" aria-label="Primary">

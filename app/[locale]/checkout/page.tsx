@@ -49,19 +49,19 @@ export default function Page(){
           <div className="grid sm:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm mb-1" htmlFor="name">{tB('name')}</label>
-              <input id="name" className="w-full rounded-xl border px-3 py-2" dir="auto" required/>
+              <input id="name" className="input" dir="auto" required/>
             </div>
             <div>
               <label className="block text-sm mb-1" htmlFor="phone">{tB('phone')}</label>
-              <input id="phone" className="w-full rounded-xl border px-3 py-2" dir="auto" inputMode="tel" placeholder="+966" required/>
+              <input id="phone" className="input" dir="auto" inputMode="tel" placeholder="+966" required/>
             </div>
             <div className="sm:col-span-2">
               <label className="block text-sm mb-1" htmlFor="email">{tB('email')}</label>
-              <input id="email" className="w-full rounded-xl border px-3 py-2" dir="auto" inputMode="email" required/>
+              <input id="email" className="input" dir="auto" inputMode="email" required/>
             </div>
             <div className="sm:col-span-2">
               <label className="block text-sm mb-1" htmlFor="note">{tB('note')}</label>
-              <textarea id="note" className="w-full rounded-xl border px-3 py-2" rows={3} dir="auto"></textarea>
+              <textarea id="note" className="input" rows={3} dir="auto"></textarea>
             </div>
           </div>
 
@@ -100,7 +100,7 @@ export default function Page(){
           </label>
 
           <div className="mt-4">
-            <button className="px-4 py-2 rounded-xl bg-slate-900 text-white disabled:opacity-50" disabled={!agree} title="Demo only">
+            <button className="btn btn-primary disabled:opacity-50" disabled={!agree} title="Demo only">
               {tB('confirmDemo')}
             </button>
           </div>

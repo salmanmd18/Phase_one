@@ -43,7 +43,7 @@ export default function Page({params}:{params:{locale:string; slug:string}}){
             </div>
           </div>
 
-          <div className="mt-6 p-4 rounded-2xl border bg-white">
+          <div className="mt-6 p-4 rounded-[var(--radius-lg)] border bg-white shadow-[var(--shadow-sm)]">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <div className="text-sm text-slate-500">{tV('price')}</div>
@@ -57,7 +57,7 @@ export default function Page({params}:{params:{locale:string; slug:string}}){
             <h3 className="font-semibold mb-2">{tV('similar')}</h3>
             <div className="grid sm:grid-cols-2 gap-3">
               {venues.filter(x=>x.id!==v.id).map(x=> (
-                <div key={x.id} className="p-3 rounded-2xl border bg-white shadow-sm hover:shadow-md transition-shadow">
+                <div key={x.id} className="p-3 rounded-[var(--radius-md)] border bg-white shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] transition-base">
                   <div className="aspect-video rounded-xl overflow-hidden relative">
                     <Image src={x.hero} alt={`${locale==='en'?x.name_en:x.name_ar} hero image`} fill className="object-cover" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"/>
                   </div>
@@ -74,4 +74,3 @@ export default function Page({params}:{params:{locale:string; slug:string}}){
     </section>
   )
 }
-

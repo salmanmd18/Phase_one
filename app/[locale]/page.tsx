@@ -16,8 +16,8 @@ export default function Page(){
           <p className="text-slate-600 mb-6">{tH('tag')}</p>
           <form className="flex flex-col sm:flex-row gap-3" action={`/${locale}/venues`}>
             <label className="sr-only" htmlFor="home-search">{tH('search')}</label>
-            <input id="home-search" name="q" placeholder={tH('placeholder')} className="flex-1 rounded-xl border px-4 py-3" dir="auto" />
-            <button type="submit" className="rounded-xl px-5 py-3 bg-slate-900 text-white font-medium">{tH('search')}</button>
+            <input id="home-search" name="q" placeholder={tH('placeholder')} className="input flex-1" dir="auto" />
+            <button type="submit" className="btn btn-primary font-medium">{tH('search')}</button>
           </form>
         </div>
       </div>

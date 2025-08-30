@@ -27,7 +27,7 @@ export default function BookingWidget({priceSAR}:{priceSAR:number}){
             </div>
           </div>
         </div>
-        <a href={`/${locale}/checkout`} className="px-4 py-2 rounded-xl bg-slate-900 text-white">{tB('reserveDemo')}</a>
+        <a href={`/${locale}/checkout`} className="btn btn-primary">{tB('reserveDemo')}</a>
       </div>
 
       <fieldset className="mt-4">
@@ -56,10 +56,9 @@ export default function BookingWidget({priceSAR}:{priceSAR:number}){
           </div>
         )}
         {payMode==='offline' && (
-          <div className="mt-3 p-3 rounded-xl bg-slate-50 border text-sm text-slate-700">{tB('cashCollection')}</div>
+          <div className="mt-3 p-3 rounded-[var(--radius-md)] bg-slate-50 border text-sm text-slate-700">{tB('cashCollection')}</div>
         )}
       </fieldset>
     </div>
   )
 }
-
