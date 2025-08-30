@@ -36,7 +36,12 @@ export default function Page(){
     const emailOk = /.+@.+\..+/.test(email.trim());
     if (!emailOk) { setErrEmail(tB('errEmail')); ok = false; }
     const digits = phone.replace(/\D/g,'');
-    if (digits.length < 8) { setErrPhone(tB('errPhone')); ok = false; }
+    // Expect +966 5XXXXXXXX => 12 digits (966 + 9)
+    const normalized = normalizeKsa(digits);
+    if (!(normalized.startsWith('966') && normalized.length === 12 && normalized[3] === '5')) {
+      setErrPhone(tB('errPhone'));
+      ok = false;
+    }
     return ok;
   };
 
@@ -44,6 +49,38 @@ export default function Page(){
     setName(''); setPhone(''); setEmail(''); setNote(''); setAgree(false);
     setPayMode('online'); setOnlineMethod('stc');
   };
+
+  function normalizeKsa(digits: string){
+    // remove leading 00 (intl prefix)
+    if(digits.startsWith('00')) digits = digits.slice(2);
+    if(digits.startsWith('966')) {
+      // ok
+    } else if (digits.startsWith('0')) {
+      digits = '966' + digits.slice(1);
+    } else if (digits.startsWith('5')) {
+      digits = '966' + digits;
+    }
+    // keep max 12 digits (966 + 9)
+    return digits.slice(0, 12);
+  }
+
+  function formatKsa(input: string){
+    let d = input.replace(/\D/g,'');
+    d = normalizeKsa(d);
+    if(d.length <= 3) return '+' + d;
+    const cc = d.slice(0,3); // 966
+    const rest = d.slice(3); // up to 9 digits
+    const a = rest.slice(0,1);
+    const b = rest.slice(1,4);
+    const c = rest.slice(4,7);
+    const e = rest.slice(7,9);
+    let out = `+${cc}`;
+    if(a) out += ` ${a}`;
+    if(b) out += ` ${b}`;
+    if(c) out += ` ${c}`;
+    if(e) out += ` ${e}`;
+    return out;
+  }
 
   return (
     <section aria-labelledby="co-title">
@@ -83,7 +120,7 @@ export default function Page(){
             </div>
             <div>
               <label className="block text-sm mb-1" htmlFor="phone">{tB('phone')}</label>
-              <input id="phone" className="input" dir="auto" inputMode="tel" placeholder="+966" value={phone} onChange={e=>{ setPhone(e.target.value); setErrPhone(''); }} aria-invalid={!!errPhone} aria-describedby={errPhone? 'err-phone': undefined} />
+              <input id="phone" className="input" dir="ltr" inputMode="tel" placeholder="+966 5XX XXX XXX" value={phone} onChange={e=>{ setPhone(formatKsa(e.target.value)); setErrPhone(''); }} aria-invalid={!!errPhone} aria-describedby={errPhone? 'err-phone': undefined} />
               {errPhone && <p id="err-phone" role="alert" className="mt-1 text-xs text-red-600">{errPhone}</p>}
             </div>
             <div className="sm:col-span-2">
@@ -145,4 +182,3 @@ export default function Page(){
     </section>
   )
 }
-
