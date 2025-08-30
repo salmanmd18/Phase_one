@@ -28,7 +28,8 @@
     "sar": "SAR",
     "back": "Back to results",
     "amenities": "Amenities",
-    "description": "Description"
+    "description": "Description",
+    "empty": "No venues match your search. Try a different term."
   },
   "Booking": {
     "depositPolicy": "Pay 20% now to reserve. Pay the remaining 80% later.",
