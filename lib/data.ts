@@ -24,7 +24,7 @@ export const venues: Venue[] = [
     priceSAR: 1800,
     capacity: 120,
     amenities_en: ['Pool', 'Garden', 'Sound System'],
-    amenities_ar: ['مسبح', 'حديقة', 'نظام صوت'],
+    amenities_ar: ['مسبح', 'حديقة', 'نظام صوتي'],
     hero: 'https://images.unsplash.com/photo-1501117716987-c8e86df5382f?q=80&w=1600&auto=format&fit=crop',
     photos: [
       'https://images.unsplash.com/photo-1505692932041-c8e09b870d2e?q=80&w=1600&auto=format&fit=crop',
@@ -32,7 +32,7 @@ export const venues: Venue[] = [
       'https://images.unsplash.com/photo-1505691723518-36a5ac3b2ec0?q=80&w=1600&auto=format&fit=crop'
     ],
     desc_en: 'Modern resort in Dammam ideal for parties & weddings. Large outdoor area and indoor hall.',
-    desc_ar: 'منتجع حديث في الدمام مناسب للحفلات والأعراس. مساحة خارجية كبيرة وقاعة داخلية.'
+    desc_ar: 'منتجع حديث في الدمام مثالي للحفلات والأعراس. مساحة خارجية كبيرة وقاعة داخلية.'
   },
   {
     id: 'sea-breeze',
@@ -43,7 +43,7 @@ export const venues: Venue[] = [
     priceSAR: 1450,
     capacity: 80,
     amenities_en: ['Sea View', 'Parking', 'Lighting'],
-    amenities_ar: ['إطلالة بحرية', 'مواقف', 'إضاءة'],
+    amenities_ar: ['إطلالة بحرية', 'مواقف سيارات', 'إضاءة'],
     hero: 'https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?q=80&w=1600&auto=format&fit=crop',
     photos: [
       'https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?q=80&w=1600&auto=format&fit=crop',
@@ -51,6 +51,26 @@ export const venues: Venue[] = [
       'https://images.unsplash.com/photo-1496412705862-e0088f16f791?q=80&w=1600&auto=format&fit=crop'
     ],
     desc_en: 'Cozy venue near the corniche. Perfect for intimate events and family gatherings.',
-    desc_ar: 'قاعة مريحة قرب الكورنيش. مناسبة للمناسبات الصغيرة والتجمعات العائلية.'
+    desc_ar: 'قاعة مريحة قرب الكورنيش. مثالية للمناسبات الصغيرة واجتماعات العائلة.'
+  },
+  {
+    id: 'garden-hall',
+    slug: 'garden-hall',
+    name_en: 'Garden Hall',
+    name_ar: 'قاعة الحديقة',
+    city: 'Dammam',
+    priceSAR: 2100,
+    capacity: 150,
+    amenities_en: ['Indoor Hall', 'Catering Area', 'Parking'],
+    amenities_ar: ['قاعة داخلية', 'منطقة ضيافة', 'مواقف سيارات'],
+    hero: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1600&auto=format&fit=crop',
+    photos: [
+      'https://images.unsplash.com/photo-1556906772-0d5056c614a6?q=80&w=1600&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=1600&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1600&auto=format&fit=crop'
+    ],
+    desc_en: 'Spacious hall with elegant interiors and flexible seating.',
+    desc_ar: 'قاعة واسعة بديكورات أنيقة ومقاعد مرنة.'
   }
 ];
+
