@@ -36,3 +36,27 @@ export default async function LocaleLayout({
     </html>
   );
 }
+
+export async function generateMetadata({params}:{params:{locale:'ar'|'en'}}) {
+  const {locale} = params;
+  const title = locale === 'ar' ? 'أماكن الدمام — حجز منتجعات وقاعات' : 'Dammam Venues — Resorts & Halls';
+  const description = locale === 'ar'
+    ? 'احجز أماكنك في الدمام بسهولة: منتجعات، قاعات، وخدمات مميزة.'
+    : 'Book premium venues in Dammam with ease: resorts, halls, and services.';
+  return {
+    title,
+    description,
+    alternates: {
+      languages: {
+        ar: '/ar',
+        en: '/en'
+      }
+    },
+    openGraph: {
+      title,
+      description,
+      locale,
+      type: 'website'
+    }
+  } as const;
+}
