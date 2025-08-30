@@ -2,6 +2,10 @@ import {NextIntlClientProvider} from 'next-intl';
 import {notFound} from 'next/navigation';
 import '../globals.css';
 import Header from '@/components/Header';
+import {Inter, IBM_Plex_Sans_Arabic} from 'next/font/google';
+
+const inter = Inter({subsets: ['latin'], display: 'swap'});
+const ibmArabic = IBM_Plex_Sans_Arabic({subsets: ['arabic'], weight: ['400','500','600','700'], display: 'swap'});
 
 export default async function LocaleLayout({
   children, params: {locale}
@@ -13,10 +17,11 @@ export default async function LocaleLayout({
     notFound();
   }
   const dir = locale.startsWith('ar') ? 'rtl' : 'ltr';
+  const fontClass = dir === 'rtl' ? ibmArabic.className : inter.className;
 
   return (
-    <html lang={locale} dir={dir} suppressHydrationWarning>
-      <body>
+    <html lang={locale} dir={dir} suppressHydrationWarning className={fontClass}>
+      <body className="antialiased bg-slate-50 text-slate-800">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
           <main className="max-w-6xl mx-auto px-4 py-8">{children}</main>
