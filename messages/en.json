@@ -53,7 +53,8 @@
     "subtotal": "Subtotal",
     "total": "Total",
     "continue": "Continue",
-    "back": "Back"
+    "back": "Back",
+    "success": "Reservation submitted (demo). We'll contact you soon."
   },
   "Services": {
     "title": "Event Services in Dammam",

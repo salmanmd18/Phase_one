@@ -17,6 +17,7 @@ export default function Page(){
   const [payMode, setPayMode] = useState<'online'|'offline'>('online');
   const [onlineMethod, setOnlineMethod] = useState<'stc'|'rajhi'>('stc');
   const [agree, setAgree] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <section aria-labelledby="co-title">
@@ -41,7 +42,7 @@ export default function Page(){
           </div>
         </aside>
 
-        <form className="p-4 rounded-2xl border bg-white" onSubmit={(e)=>e.preventDefault()}>
+        <form className="p-4 rounded-2xl border bg-white" onSubmit={(e)=>{e.preventDefault(); if(agree){ setSubmitted(true); }}}>
           <h2 className="font-semibold mb-3">{tB('contact')}</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div>
@@ -100,6 +101,9 @@ export default function Page(){
             <button className="px-4 py-2 rounded-xl bg-slate-900 text-white disabled:opacity-50" disabled={!agree} title="Demo only">
               {tB('confirmDemo')}
             </button>
+          </div>
+          <div aria-live="polite" className="mt-3 text-sm text-green-700" role="status">
+            {submitted ? tB('success') : ''}
           </div>
         </form>
       </div>
