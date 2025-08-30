@@ -61,6 +61,10 @@
     "continue": "Continue",
     "back": "Back",
     "success": "Reservation submitted (demo). We'll contact you soon.",
+    "formError": "Please correct the highlighted fields.",
+    "errName": "Enter your full name (2+ characters)",
+    "errEmail": "Enter a valid email address",
+    "errPhone": "Enter a valid phone number",
     "selectDate": "Select a date",
     "friSatDisabled": "Fridays and Saturdays are unavailable (next 30 days)"
   },

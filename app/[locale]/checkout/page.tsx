@@ -1,25 +1,49 @@
 'use client';
 
-import {useMemo, useState} from 'react';
+import {useMemo, useRef, useState} from 'react';
 import {useTranslations, useLocale} from 'next-intl';
 import Image from 'next/image';
 import {venues} from '@/lib/data';
 import Toast from '@/components/Toast';
 
 export default function Page(){
-  // For demo, use first venue
   const venue = venues[0];
   const tB = useTranslations('Booking');
   const tV = useTranslations('Venues');
   const locale = useLocale();
 
-  const deposit = useMemo(()=> Math.round(venue.priceSAR * 0.2), []);
-  const remainder = useMemo(()=> venue.priceSAR - Math.round(venue.priceSAR * 0.2), []);
+  const deposit = useMemo(()=> Math.round(venue.priceSAR * 0.2), [venue.priceSAR]);
+  const remainder = useMemo(()=> venue.priceSAR - Math.round(venue.priceSAR * 0.2), [venue.priceSAR]);
   const [payMode, setPayMode] = useState<'online'|'offline'>('online');
   const [onlineMethod, setOnlineMethod] = useState<'stc'|'rajhi'>('stc');
   const [agree, setAgree] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
+
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [note, setNote] = useState('');
+  const [errName, setErrName] = useState('');
+  const [errPhone, setErrPhone] = useState('');
+  const [errEmail, setErrEmail] = useState('');
+  const liveRef = useRef<HTMLDivElement>(null);
+
+  const validate = () => {
+    let ok = true;
+    setErrName(''); setErrPhone(''); setErrEmail('');
+    if (name.trim().length < 2) { setErrName(tB('errName')); ok = false; }
+    const emailOk = /.+@.+\..+/.test(email.trim());
+    if (!emailOk) { setErrEmail(tB('errEmail')); ok = false; }
+    const digits = phone.replace(/\D/g,'');
+    if (digits.length < 8) { setErrPhone(tB('errPhone')); ok = false; }
+    return ok;
+  };
+
+  const reset = () => {
+    setName(''); setPhone(''); setEmail(''); setNote(''); setAgree(false);
+    setPayMode('online'); setOnlineMethod('stc');
+  };
 
   return (
     <section aria-labelledby="co-title">
@@ -29,11 +53,11 @@ export default function Page(){
           <h2 className="font-semibold mb-3">{tB('summary')}</h2>
           <div className="flex items-center gap-3">
             <div className="relative w-24 h-16 rounded-lg overflow-hidden border">
-              <Image src={venue.hero} alt="Venue hero" fill className="object-cover"/>
+              <Image src={venue.hero} alt="Venue hero" fill className="object-cover" sizes="96px"/>
             </div>
             <div>
               <div className="font-medium">{locale==='en'?venue.name_en:venue.name_ar}</div>
-              <div className="text-sm text-slate-500">Dammam • {tV('capacity')}: {venue.capacity}</div>
+              <div className="text-sm text-slate-500">Dammam — {tV('capacity')}: {venue.capacity}</div>
             </div>
           </div>
           <div className="mt-4 space-y-1 text-sm">
@@ -44,24 +68,32 @@ export default function Page(){
           </div>
         </aside>
 
-        <form className="p-4 rounded-2xl border bg-white" onSubmit={(e)=>{e.preventDefault(); if(agree){ setSubmitted(true); setToastOpen(true);} }}>
+        <form className="p-4 rounded-2xl border bg-white" onSubmit={(e)=>{
+          e.preventDefault();
+          const ok = validate();
+          if(!ok){ setSubmitted(false); if(liveRef.current){ liveRef.current.textContent = tB('formError'); } return; }
+          if(agree){ setSubmitted(true); setToastOpen(true); reset(); }
+        }}>
           <h2 className="font-semibold mb-3">{tB('contact')}</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm mb-1" htmlFor="name">{tB('name')}</label>
-              <input id="name" className="input" dir="auto" required/>
+              <input id="name" className="input" dir="auto" value={name} onChange={e=>{ setName(e.target.value); setErrName(''); }} aria-invalid={!!errName} aria-describedby={errName? 'err-name': undefined} />
+              {errName && <p id="err-name" role="alert" className="mt-1 text-xs text-red-600">{errName}</p>}
             </div>
             <div>
               <label className="block text-sm mb-1" htmlFor="phone">{tB('phone')}</label>
-              <input id="phone" className="input" dir="auto" inputMode="tel" placeholder="+966" required/>
+              <input id="phone" className="input" dir="auto" inputMode="tel" placeholder="+966" value={phone} onChange={e=>{ setPhone(e.target.value); setErrPhone(''); }} aria-invalid={!!errPhone} aria-describedby={errPhone? 'err-phone': undefined} />
+              {errPhone && <p id="err-phone" role="alert" className="mt-1 text-xs text-red-600">{errPhone}</p>}
             </div>
             <div className="sm:col-span-2">
               <label className="block text-sm mb-1" htmlFor="email">{tB('email')}</label>
-              <input id="email" className="input" dir="auto" inputMode="email" required/>
+              <input id="email" className="input" dir="auto" inputMode="email" value={email} onChange={e=>{ setEmail(e.target.value); setErrEmail(''); }} aria-invalid={!!errEmail} aria-describedby={errEmail? 'err-email': undefined} />
+              {errEmail && <p id="err-email" role="alert" className="mt-1 text-xs text-red-600">{errEmail}</p>}
             </div>
             <div className="sm:col-span-2">
               <label className="block text-sm mb-1" htmlFor="note">{tB('note')}</label>
-              <textarea id="note" className="input" rows={3} dir="auto"></textarea>
+              <textarea id="note" className="input" rows={3} dir="auto" value={note} onChange={e=> setNote(e.target.value)}></textarea>
             </div>
           </div>
 
@@ -81,21 +113,21 @@ export default function Page(){
               <div className="mt-3 flex gap-3 flex-wrap">
                 <label className={`inline-flex items-center gap-2 px-3 py-2 rounded-xl border cursor-pointer ${onlineMethod==='stc'?'bg-slate-100':'hover:bg-slate-50'}`}>
                   <input type="radio" name="onlinemethod" value="stc" checked={onlineMethod==='stc'} onChange={()=>setOnlineMethod('stc')} />
-                  <span>📱 {tB('stcPay')}</span>
+                  <span>{tB('stcPay')}</span>
                 </label>
                 <label className={`inline-flex items-center gap-2 px-3 py-2 rounded-xl border cursor-pointer ${onlineMethod==='rajhi'?'bg-slate-100':'hover:bg-slate-50'}`}>
                   <input type="radio" name="onlinemethod" value="rajhi" checked={onlineMethod==='rajhi'} onChange={()=>setOnlineMethod('rajhi')} />
-                  <span>🏦 {tB('alRajhi')}</span>
+                  <span>{tB('alRajhi')}</span>
                 </label>
               </div>
             )}
             {payMode==='offline' && (
-              <div className="mt-3 p-3 rounded-xl bg-slate-50 border text-sm text-slate-700">🧾 {tB('cashCollection')}</div>
+              <div className="mt-3 p-3 rounded-xl bg-slate-50 border text-sm text-slate-700">{tB('cashCollection')}</div>
             )}
           </fieldset>
 
           <label className="mt-4 inline-flex items-center gap-2 text-sm">
-            <input type="checkbox" onChange={(e)=>setAgree(e.target.checked)} />
+            <input type="checkbox" checked={agree} onChange={(e)=>setAgree(e.target.checked)} />
             <span>{tB('agree')}</span>
           </label>
 
@@ -104,7 +136,7 @@ export default function Page(){
               {tB('confirmDemo')}
             </button>
           </div>
-          <div aria-live="polite" className="mt-3 text-sm text-green-700" role="status">
+          <div aria-live="polite" ref={liveRef} className="mt-3 text-sm text-green-700" role="status">
             {submitted ? tB('success') : ''}
           </div>
         </form>
