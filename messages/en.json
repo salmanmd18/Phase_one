@@ -29,7 +29,12 @@
     "back": "Back to results",
     "amenities": "Amenities",
     "description": "Description",
-    "empty": "No venues match your search. Try a different term."
+    "empty": "No venues match your search. Try a different term.",
+    "search": "Search",
+    "capacityMin": "Min capacity",
+    "priceMin": "Min price",
+    "priceMax": "Max price",
+    "clear": "Clear"
   },
   "Booking": {
     "depositPolicy": "Pay 20% now to reserve. Pay the remaining 80% later.",
