@@ -94,7 +94,7 @@ export default function Page(){
             </div>
             <div>
               <div className="font-medium">{locale==='en'?venue.name_en:venue.name_ar}</div>
-              <div className="text-sm text-slate-500">Dammam — {tV('capacity')}: {venue.capacity}</div>
+              <div className="text-sm text-slate-600">Dammam — {tV('capacity')}: {venue.capacity}</div>
             </div>
           </div>
           <div className="mt-4 space-y-1 text-sm">
@@ -115,17 +115,17 @@ export default function Page(){
           <div className="grid sm:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm mb-1" htmlFor="name">{tB('name')}</label>
-              <input id="name" className="input" dir="auto" value={name} onChange={e=>{ setName(e.target.value); setErrName(''); }} aria-invalid={!!errName} aria-describedby={errName? 'err-name': undefined} />
+              <input id="name" className="input" dir="auto" autoComplete="name" value={name} onChange={e=>{ setName(e.target.value); setErrName(''); }} aria-invalid={!!errName} aria-describedby={errName? 'err-name': undefined} />
               {errName && <p id="err-name" role="alert" className="mt-1 text-xs text-red-600">{errName}</p>}
             </div>
             <div>
               <label className="block text-sm mb-1" htmlFor="phone">{tB('phone')}</label>
-              <input id="phone" className="input" dir="ltr" inputMode="tel" placeholder="+966 5XX XXX XXX" value={phone} onChange={e=>{ setPhone(formatKsa(e.target.value)); setErrPhone(''); }} aria-invalid={!!errPhone} aria-describedby={errPhone? 'err-phone': undefined} />
+              <input id="phone" className="input" dir="ltr" inputMode="tel" autoComplete="tel" placeholder="+966 5XX XXX XXX" value={phone} onChange={e=>{ setPhone(formatKsa(e.target.value)); setErrPhone(''); }} aria-invalid={!!errPhone} aria-describedby={errPhone? 'err-phone': undefined} />
               {errPhone && <p id="err-phone" role="alert" className="mt-1 text-xs text-red-600">{errPhone}</p>}
             </div>
             <div className="sm:col-span-2">
               <label className="block text-sm mb-1" htmlFor="email">{tB('email')}</label>
-              <input id="email" className="input" dir="auto" inputMode="email" value={email} onChange={e=>{ setEmail(e.target.value); setErrEmail(''); }} aria-invalid={!!errEmail} aria-describedby={errEmail? 'err-email': undefined} />
+              <input id="email" className="input" dir="auto" inputMode="email" autoComplete="email" value={email} onChange={e=>{ setEmail(e.target.value); setErrEmail(''); }} aria-invalid={!!errEmail} aria-describedby={errEmail? 'err-email': undefined} />
               {errEmail && <p id="err-email" role="alert" className="mt-1 text-xs text-red-600">{errEmail}</p>}
             </div>
             <div className="sm:col-span-2">

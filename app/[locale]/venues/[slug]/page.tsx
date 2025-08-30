@@ -36,7 +36,7 @@ export default function Page({params}:{params:{locale:string; slug:string}}){
         </div>
         <div>
           <h1 className="text-2xl font-bold">{locale==='en'?v.name_en:v.name_ar}</h1>
-          <div className="text-slate-500 mt-1">Dammam — {tV('capacity')}: {v.capacity}</div>
+          <div className="text-slate-600 mt-1">Dammam — {tV('capacity')}: {v.capacity}</div>
           <p className="mt-4 text-slate-700">{locale==='en'?v.desc_en:v.desc_ar}</p>
 
           <div className="mt-5">

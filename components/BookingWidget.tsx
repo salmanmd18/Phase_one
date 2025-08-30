@@ -27,7 +27,7 @@ export default function BookingWidget({priceSAR, canReserve = true, helper}:{pri
             </div>
           </div>
         </div>
-        <a aria-disabled={!canReserve} href={canReserve ? `/${locale}/checkout` : undefined} className={"btn btn-primary " + (!canReserve ? 'opacity-50 pointer-events-none' : '')}>{tB('reserveDemo')}</a>
+        <a aria-disabled={!canReserve} tabIndex={canReserve ? 0 : -1} href={canReserve ? `/${locale}/checkout` : undefined} className={"btn btn-primary " + (!canReserve ? 'opacity-50 pointer-events-none' : '')}>{tB('reserveDemo')}</a>
       </div>
 
       <fieldset className="mt-4">

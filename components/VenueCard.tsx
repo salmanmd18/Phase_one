@@ -14,7 +14,7 @@ export default function VenueCard({v}:{v: Venue}){
       <div className="mt-3 flex items-center justify-between">
         <div>
           <h3 className="font-semibold">{locale==='en'?v.name_en:v.name_ar}</h3>
-          <div className="text-sm text-slate-500">Dammam — {tV('capacity')}: {v.capacity}</div>
+          <div className="text-sm text-slate-600">Dammam — {tV('capacity')}: {v.capacity}</div>
         </div>
         <div className="text-right">
           <div className="font-bold">{v.priceSAR.toLocaleString(locale)} {tV('sar')}</div>

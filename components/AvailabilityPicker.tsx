@@ -1,7 +1,7 @@
 'use client';
 
 import {useEffect, useMemo, useState} from 'react';
-import {useTranslations} from 'next-intl';
+import {useTranslations, useLocale} from 'next-intl';
 
 function toISODate(d: Date) {
   const y = d.getFullYear();
@@ -12,6 +12,7 @@ function toISODate(d: Date) {
 
 export default function AvailabilityPicker({value, onChange}:{value?: string; onChange:(v: string)=>void}){
   const tB = useTranslations('Booking');
+  const locale = useLocale();
   const days = useMemo(()=>{
     const start = new Date();
     start.setHours(0,0,0,0);
@@ -37,7 +38,7 @@ export default function AvailabilityPicker({value, onChange}:{value?: string; on
         <label id={labelId} className="block text-sm font-medium">{tB('selectDate')}</label>
         <span id={hintId} className="text-xs text-slate-500">{tB('friSatDisabled')}</span>
       </div>
-      <div role="grid" aria-labelledby={labelId} aria-describedby={hintId} className="mt-2 grid grid-cols-7 gap-2">
+      <div role="group" aria-labelledby={labelId} aria-describedby={hintId} className="mt-2 grid grid-cols-7 gap-2">
         {days.map(({date, iso, disabled})=>{
           const isSelected = selected === iso;
           const dayNum = String(date.getDate());
@@ -48,6 +49,7 @@ export default function AvailabilityPicker({value, onChange}:{value?: string; on
               onClick={()=>{ if(!disabled){ setSelected(iso); onChange(iso);} }}
               disabled={disabled}
               aria-pressed={isSelected}
+              aria-label={date.toLocaleDateString(locale)}
               className={`h-10 rounded-[var(--radius-md)] border text-sm transition-base ${isSelected? 'bg-slate-900 text-white border-slate-900' : 'bg-white hover:bg-slate-50'} ${disabled? 'opacity-40 cursor-not-allowed' : ''}`}
             >
               {dayNum}
@@ -58,4 +60,3 @@ export default function AvailabilityPicker({value, onChange}:{value?: string; on
     </div>
   );
 }
-
