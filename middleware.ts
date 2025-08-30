@@ -4,7 +4,9 @@ import {locales, defaultLocale} from './i18n';
 export default createMiddleware({
   locales,
   defaultLocale,
-  localePrefix: 'always'
+  localePrefix: 'always',
+  // Force default to Arabic instead of browser language detection
+  localeDetection: false
 });
 
 export const config = {
