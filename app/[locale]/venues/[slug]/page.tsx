@@ -35,7 +35,13 @@ export default function Page({params}:{params:{locale:string; slug:string}}){
           </div>
         </div>
         <div>
-          <h1 className="text-2xl font-bold">{locale==='en'?v.name_en:v.name_ar}</h1>
+          <h1 className="text-2xl font-bold flex items-center gap-2">
+            {locale==='en'?v.name_en:v.name_ar}
+            <span className="inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full border bg-white text-slate-700" title="verified">
+              <svg aria-hidden="true" viewBox="0 0 20 20" width="14" height="14" fill="currentColor"><path d="M7.629 13.233 4.4 10.004l1.2-1.2 2.029 2.03 5.771-5.772 1.2 1.2-6.971 6.971z"/></svg>
+              <span>{tV('verified')}</span>
+            </span>
+          </h1>
           <div className="text-slate-600 mt-1">Dammam — {tV('capacity')}: {v.capacity}</div>
           <p className="mt-4 text-slate-700">{locale==='en'?v.desc_en:v.desc_ar}</p>
 

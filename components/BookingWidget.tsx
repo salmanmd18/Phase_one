@@ -47,18 +47,28 @@ export default function BookingWidget({priceSAR, canReserve = true, helper}:{pri
           <div className="mt-3 flex gap-3 flex-wrap">
             <label className={`inline-flex items-center gap-2 px-3 py-2 rounded-xl border cursor-pointer ${onlineMethod==='stc'?'bg-slate-100':'hover:bg-slate-50'}`}>
               <input type="radio" name="onlinemethod" value="stc" checked={onlineMethod==='stc'} onChange={()=>setOnlineMethod('stc')} />
-              <span>{tB('stcPay')}</span>
+              <span className="inline-flex items-center gap-1">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M4 7h16v10H4z" opacity=".2"/><path d="M20 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 12H4V7h16Z"/></svg>
+                {tB('stcPay')}
+              </span>
             </label>
             <label className={`inline-flex items-center gap-2 px-3 py-2 rounded-xl border cursor-pointer ${onlineMethod==='rajhi'?'bg-slate-100':'hover:bg-slate-50'}`}>
               <input type="radio" name="onlinemethod" value="rajhi" checked={onlineMethod==='rajhi'} onChange={()=>setOnlineMethod('rajhi')} />
-              <span>{tB('alRajhi')}</span>
+              <span className="inline-flex items-center gap-1">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V10z"/></svg>
+                {tB('alRajhi')}
+              </span>
             </label>
           </div>
         )}
         {payMode==='offline' && (
-          <div className="mt-3 p-3 rounded-[var(--radius-md)] bg-slate-50 border text-sm text-slate-700">{tB('cashCollection')}</div>
+          <div className="mt-3 p-3 rounded-[var(--radius-md)] bg-slate-50 border text-sm text-slate-700 inline-flex items-center gap-2">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M3 7h18v10H3z" opacity=".2"/><path d="M21 5H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 12H3V7h18Z"/><circle cx="12" cy="12" r="3"/></svg>
+            {tB('cashCollection')}
+          </div>
         )}
       </fieldset>
+      <p className="mt-2 text-xs text-slate-600">{tB('cancellationNote')}</p>
       {helper ? (
         <p className="mt-2 text-sm text-slate-600" aria-live="polite">{helper}</p>
       ) : null}

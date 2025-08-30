@@ -34,7 +34,8 @@
     "capacityMin": "Min capacity",
     "priceMin": "Min price",
     "priceMax": "Max price",
-    "clear": "Clear"
+    "clear": "Clear",
+    "verified": "Verified venue"
   },
   "Booking": {
     "depositPolicy": "Pay 20% now to reserve. Pay the remaining 80% later.",
@@ -66,7 +67,8 @@
     "errEmail": "Enter a valid email address",
     "errPhone": "Enter a valid phone number",
     "selectDate": "Select a date",
-    "friSatDisabled": "Fridays and Saturdays are unavailable (next 30 days)"
+    "friSatDisabled": "Fridays and Saturdays are unavailable (next 30 days)",
+    "cancellationNote": "Cancellation policy applies (placeholder)."
   },
   "Services": {
     "title": "Event Services in Dammam",
