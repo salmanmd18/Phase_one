@@ -4,6 +4,7 @@ import {useMemo, useState} from 'react';
 import {useTranslations, useLocale} from 'next-intl';
 import Image from 'next/image';
 import {venues} from '@/lib/data';
+import Toast from '@/components/Toast';
 
 export default function Page(){
   // For demo, use first venue
@@ -18,6 +19,7 @@ export default function Page(){
   const [onlineMethod, setOnlineMethod] = useState<'stc'|'rajhi'>('stc');
   const [agree, setAgree] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [toastOpen, setToastOpen] = useState(false);
 
   return (
     <section aria-labelledby="co-title">
@@ -42,7 +44,7 @@ export default function Page(){
           </div>
         </aside>
 
-        <form className="p-4 rounded-2xl border bg-white" onSubmit={(e)=>{e.preventDefault(); if(agree){ setSubmitted(true); }}}>
+        <form className="p-4 rounded-2xl border bg-white" onSubmit={(e)=>{e.preventDefault(); if(agree){ setSubmitted(true); setToastOpen(true);} }}>
           <h2 className="font-semibold mb-3">{tB('contact')}</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div>
@@ -107,6 +109,7 @@ export default function Page(){
           </div>
         </form>
       </div>
+      <Toast open={toastOpen} onOpenChange={setToastOpen} message={tB('success')} />
     </section>
   )
 }
