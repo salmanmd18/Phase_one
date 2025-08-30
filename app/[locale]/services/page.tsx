@@ -62,7 +62,7 @@ export async function generateMetadata({params}:{params:{locale:'ar'|'en'}}){
   return {
     title,
     description,
-    alternates: { languages: { ar: '/ar/services', en: '/en/services' } },
-    openGraph: { title, description, locale, type: 'website' }
+    alternates: { canonical: `/${locale}/services`, languages: { ar: '/ar/services', en: '/en/services' } },
+    openGraph: { title, description, locale, type: 'website', images: ['https://images.unsplash.com/photo-1505691723518-36a5ac3b2ec0?q=80&w=1200&auto=format&fit=crop'] }
   } as const;
 }

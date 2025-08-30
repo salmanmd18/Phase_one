@@ -23,8 +23,9 @@ export default async function LocaleLayout({
     <html lang={locale} dir={dir} suppressHydrationWarning className={fontClass}>
       <body className="antialiased bg-slate-50 text-slate-800">
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <a href="#main" className="skip-link">{locale==='ar' ? 'تخطي إلى المحتوى' : 'Skip to content'}</a>
           <Header />
-          <main className="max-w-6xl mx-auto px-4 py-8">{children}</main>
+          <main id="main" className="max-w-6xl mx-auto px-4 py-8">{children}</main>
           <footer className="border-t mt-8">
             <div className="max-w-6xl mx-auto px-4 py-6 text-sm text-slate-500 flex flex-col sm:flex-row gap-2 sm:items-center justify-between">
               <div>{/* demo note from messages */}</div>

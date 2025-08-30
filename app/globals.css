@@ -57,6 +57,10 @@ html[dir="rtl"] p { line-height: 1.9; }
 @keyframes shimmer { 100% { transform: translateX(100%); } }
 @media (prefers-reduced-motion: reduce) { .skeleton::after { animation: none; } }
 
+/* Skip link */
+.skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+.skip-link:focus { left: 16px; top: 12px; width: auto; height: auto; z-index: 50; background: #111827; color: #fff; padding: 8px 12px; border-radius: 8px; box-shadow: var(--shadow-md); }
+
 /* Base typography scale */
 @layer base {
   h1 { @apply text-3xl sm:text-4xl font-bold tracking-tight; }

@@ -115,7 +115,7 @@ export async function generateMetadata({params}:{params:{locale:'ar'|'en'; slug:
   return {
     title,
     description: desc,
-    alternates: { languages: { ar: `/ar/venues/${params.slug}`, en: `/en/venues/${params.slug}` } },
-    openGraph: { title, description: desc, locale, type: 'article' }
+    alternates: { canonical: `/${locale}/venues/${params.slug}`, languages: { ar: `/ar/venues/${params.slug}`, en: `/en/venues/${params.slug}` } },
+    openGraph: { title, description: desc, locale, type: 'article', images: v ? [v.hero] : [] }
   } as const;
 }

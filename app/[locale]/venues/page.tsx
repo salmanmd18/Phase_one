@@ -155,7 +155,7 @@ export async function generateMetadata({params}:{params:{locale:'ar'|'en'}}){
   return {
     title,
     description,
-    alternates: { languages: { ar: '/ar/venues', en: '/en/venues' } },
-    openGraph: { title, description, locale, type: 'website' }
+    alternates: { canonical: `/${locale}/venues`, languages: { ar: '/ar/venues', en: '/en/venues' } },
+    openGraph: { title, description, locale, type: 'website', images: ['https://images.unsplash.com/photo-1501117716987-c8e86df5382f?q=80&w=1200&auto=format&fit=crop'] }
   } as const;
 }
