@@ -20,13 +20,13 @@ export default function Header({active}:{active?: string}){
           <div className="text-sm text-slate-500">{t('dammamOnly')}</div>
         </div>
         <div className="flex items-center gap-2">
-          <Link href={href} hrefLang={other} prefetch className="px-3 py-1.5 rounded-xl border hover:bg-slate-100 text-sm font-medium" aria-label={t(locale==='en'?'ariaSwitchToEn':'ariaSwitchToAr')}>
+          <Link href={href} hrefLang={other} prefetch className="px-3 py-1.5 rounded-xl border hover:bg-slate-100 text-sm font-medium" aria-label={t(locale==='en'?'ariaSwitchToAr':'ariaSwitchToEn')}>
             {locale==='en'? t('toggleAr') : t('toggleEn')}
           </Link>
           <nav className="hidden sm:flex items-center gap-2" aria-label="Primary">
-            <Link href={`/${locale}`} className={clsx('px-3 py-1.5 rounded-xl text-sm border hover:bg-slate-100', active==='home' && 'bg-slate-900 text-white border-transparent')}>{t('home')}</Link>
-            <Link href={`/${locale}/venues`} className={clsx('px-3 py-1.5 rounded-xl text-sm border hover:bg-slate-100', active==='venues' && 'bg-slate-900 text-white border-transparent')}>{t('venues')}</Link>
-            <Link href={`/${locale}/services`} className={clsx('px-3 py-1.5 rounded-xl text-sm border hover:bg-slate-100', active==='services' && 'bg-slate-900 text-white border-transparent')}>{t('services')}</Link>
+            <Link href={`/${locale}`} aria-current={pathname===`/${locale}`? 'page': undefined} className={clsx('px-3 py-1.5 rounded-xl text-sm border hover:bg-slate-100', pathname===`/${locale}` && 'bg-slate-900 text-white border-transparent')}>{t('home')}</Link>
+            <Link href={`/${locale}/venues`} aria-current={pathname.startsWith(`/${locale}/venues`)? 'page': undefined} className={clsx('px-3 py-1.5 rounded-xl text-sm border hover:bg-slate-100', pathname.startsWith(`/${locale}/venues`) && 'bg-slate-900 text-white border-transparent')}>{t('venues')}</Link>
+            <Link href={`/${locale}/services`} aria-current={pathname.startsWith(`/${locale}/services`)? 'page': undefined} className={clsx('px-3 py-1.5 rounded-xl text-sm border hover:bg-slate-100', pathname.startsWith(`/${locale}/services`) && 'bg-slate-900 text-white border-transparent')}>{t('services')}</Link>
           </nav>
         </div>
       </div>
