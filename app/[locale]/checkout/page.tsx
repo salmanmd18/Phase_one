@@ -182,3 +182,15 @@ export default function Page(){
     </section>
   )
 }
+
+export async function generateMetadata({params}:{params:{locale:'ar'|'en'}}){
+  const {locale} = params;
+  const title = locale==='ar' ? 'الدفع — الدمام' : 'Checkout — Dammam';
+  const description = locale==='ar' ? 'ملخص الحجز ومعلومات التواصل (تجريبي).' : 'Booking summary and contact info (demo).';
+  return {
+    title,
+    description,
+    alternates: { languages: { ar: '/ar/checkout', en: '/en/checkout' } },
+    openGraph: { title, description, locale, type: 'website' }
+  } as const;
+}

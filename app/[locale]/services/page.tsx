@@ -55,3 +55,14 @@ export default function Page(){
   )
 }
 
+export async function generateMetadata({params}:{params:{locale:'ar'|'en'}}){
+  const {locale} = params;
+  const title = locale==='ar' ? 'الخدمات — الدمام' : 'Services — Dammam';
+  const description = locale==='ar' ? 'مزودو خدمات الضيافة، التصوير، والديكور في الدمام.' : 'Catering, photography, and decoration services in Dammam.';
+  return {
+    title,
+    description,
+    alternates: { languages: { ar: '/ar/services', en: '/en/services' } },
+    openGraph: { title, description, locale, type: 'website' }
+  } as const;
+}

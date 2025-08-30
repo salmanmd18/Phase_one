@@ -99,3 +99,17 @@ export default function Page({params}:{params:{locale:string; slug:string}}){
     </section>
   )
 }
+
+export async function generateMetadata({params}:{params:{locale:'ar'|'en'; slug:string}}){
+  const v = venues.find(x=> x.slug === params.slug);
+  const locale = params.locale;
+  const name = v ? (locale==='en'? v.name_en : v.name_ar) : (locale==='ar'? 'مكان' : 'Venue');
+  const desc = v ? (locale==='en'? v.desc_en : v.desc_ar) : '';
+  const title = locale==='ar' ? `${name} — تفاصيل المكان` : `${name} — Venue Details`;
+  return {
+    title,
+    description: desc,
+    alternates: { languages: { ar: `/ar/venues/${params.slug}`, en: `/en/venues/${params.slug}` } },
+    openGraph: { title, description: desc, locale, type: 'article' }
+  } as const;
+}

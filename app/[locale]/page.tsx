@@ -29,3 +29,15 @@ export default function Page(){
     </section>
   )
 }
+
+export async function generateMetadata({params}:{params:{locale:'ar'|'en'}}){
+  const {locale} = params;
+  const title = locale==='ar' ? 'أماكن الدمام — الصفحة الرئيسية' : 'Dammam Venues — Home';
+  const description = locale==='ar' ? 'اكتشف أفضل الأماكن والخدمات في الدمام.' : 'Discover top venues and services in Dammam.';
+  return {
+    title,
+    description,
+    alternates: { languages: { ar: '/ar', en: '/en' } },
+    openGraph: { title, description, locale, type: 'website' }
+  } as const;
+}
