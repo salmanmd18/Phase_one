@@ -3,11 +3,14 @@ import Link from 'next/link';
 import {useLocale, useTranslations} from 'next-intl';
 import {venues} from '@/lib/data';
 import BookingWidget from '@/components/BookingWidget';
+import AvailabilityPicker from '@/components/AvailabilityPicker';
+import {useState, useMemo} from 'react';
 
 export default function Page({params}:{params:{locale:string; slug:string}}){
   const v = venues.find(x => x.slug === params.slug);
   const tV = useTranslations('Venues');
   const locale = useLocale();
+  const [selected, setSelected] = useState<string | undefined>(undefined);
 
   if(!v){
      return <div className="text-sm text-slate-500">Not found</div>
@@ -50,7 +53,29 @@ export default function Page({params}:{params:{locale:string; slug:string}}){
                 <div className="text-2xl font-bold">{v.priceSAR.toLocaleString(locale)} {tV('sar')}</div>
               </div>
             </div>
-            <BookingWidget priceSAR={v.priceSAR} />
+            <div className="mt-4">
+              <AvailabilityPicker value={selected} onChange={setSelected} />
+            </div>
+            <div className="mt-4">
+              <BookingWidget priceSAR={v.priceSAR} canReserve={useMemo(()=>{
+                if(!selected) return false;
+                const d = new Date(selected);
+                const now = new Date(); now.setHours(0,0,0,0);
+                const max = new Date(now); max.setDate(now.getDate()+30);
+                const within = d >= now && d < max;
+                const dow = d.getDay();
+                const unavailable = dow === 5 || dow === 6; // Fri/Sat
+                return within && !unavailable;
+              }, [selected])} helper={useMemo(()=>{
+                if(!selected) return locale==='ar' ? 'اختر تاريخ الحجز' : 'Select a reservation date';
+                const d = new Date(selected);
+                const dow = d.getDay();
+                if(dow === 5 || dow === 6){
+                  return locale==='ar' ? 'غير متاح أيام الجمعة والسبت (تجريبي)' : 'Unavailable on Fridays and Saturdays (demo)';
+                }
+                return '';
+              }, [selected, locale])} />
+            </div>
           </div>
 
           <div className="mt-8">

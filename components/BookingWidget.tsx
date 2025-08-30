@@ -3,7 +3,7 @@
 import {useMemo, useState} from 'react';
 import {useLocale, useTranslations} from 'next-intl';
 
-export default function BookingWidget({priceSAR}:{priceSAR:number}){
+export default function BookingWidget({priceSAR, canReserve = true, helper}:{priceSAR:number; canReserve?: boolean; helper?: string}){
   const tB = useTranslations('Booking');
   const locale = useLocale();
   const deposit = useMemo(()=> Math.round(priceSAR * 0.2), [priceSAR]);
@@ -27,7 +27,7 @@ export default function BookingWidget({priceSAR}:{priceSAR:number}){
             </div>
           </div>
         </div>
-        <a href={`/${locale}/checkout`} className="btn btn-primary">{tB('reserveDemo')}</a>
+        <a aria-disabled={!canReserve} href={canReserve ? `/${locale}/checkout` : undefined} className={"btn btn-primary " + (!canReserve ? 'opacity-50 pointer-events-none' : '')}>{tB('reserveDemo')}</a>
       </div>
 
       <fieldset className="mt-4">
@@ -59,6 +59,9 @@ export default function BookingWidget({priceSAR}:{priceSAR:number}){
           <div className="mt-3 p-3 rounded-[var(--radius-md)] bg-slate-50 border text-sm text-slate-700">{tB('cashCollection')}</div>
         )}
       </fieldset>
+      {helper ? (
+        <p className="mt-2 text-sm text-slate-600" aria-live="polite">{helper}</p>
+      ) : null}
     </div>
   )
 }

@@ -60,7 +60,9 @@
     "total": "Total",
     "continue": "Continue",
     "back": "Back",
-    "success": "Reservation submitted (demo). We'll contact you soon."
+    "success": "Reservation submitted (demo). We'll contact you soon.",
+    "selectDate": "Select a date",
+    "friSatDisabled": "Fridays and Saturdays are unavailable (next 30 days)"
   },
   "Services": {
     "title": "Event Services in Dammam",
