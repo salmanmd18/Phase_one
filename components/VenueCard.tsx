@@ -9,12 +9,12 @@ export default function VenueCard({v}:{v: Venue}){
   return (
     <article className="p-3 rounded-2xl border bg-white shadow-sm hover:shadow-md transition-shadow">
       <div className="aspect-video rounded-xl overflow-hidden relative">
-        <Image src={v.hero} alt={(locale==='en'?v.name_en:v.name_ar) + ' — hero image'} fill className="object-cover"/>
+        <Image src={v.hero} alt={`${locale==='en'?v.name_en:v.name_ar} hero image`} fill className="object-cover" sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"/>
       </div>
       <div className="mt-3 flex items-center justify-between">
         <div>
           <h3 className="font-semibold">{locale==='en'?v.name_en:v.name_ar}</h3>
-          <div className="text-sm text-slate-500">Dammam • {tV('capacity')}: {v.capacity}</div>
+          <div className="text-sm text-slate-500">Dammam — {tV('capacity')}: {v.capacity}</div>
         </div>
         <div className="text-right">
           <div className="font-bold">{v.priceSAR.toLocaleString(locale)} {tV('sar')}</div>
@@ -27,3 +27,4 @@ export default function VenueCard({v}:{v: Venue}){
     </article>
   )
 }
+
